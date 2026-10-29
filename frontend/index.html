@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda ADSO | Panel de administración</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>Tienda ADSO</h2>
+        <p>Panel de administración</p>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#clientes">Clientes</a>
+            <a href="#productos">Productos</a>
+            <a href="#pedidos">Pedidos</a>
+            <a href="#reportes">Reportes</a>
+        </nav>
+    </aside>
+
+    <main class="contenido">
+        <header>
+            <div>
+                <h1 id="inicio">Panel principal</h1>
+                <p>Gestiona tu tienda desde un solo lugar.</p>
+            </div>
+            <span id="estadoApi">Comprobando API...</span>
+        </header>
+
+        <section class="estadisticas">
+            <article class="tarjeta">
+                <p>Clientes</p>
+                <h2 id="totalClientes">0</h2>
+            </article>
+
+            <article class="tarjeta">
+                <p>Productos</p>
+                <h2 id="totalProductos">0</h2>
+            </article>
+
+            <article class="tarjeta">
+                <p>Pedidos</p>
+                <h2 id="totalPedidos">0</h2>
+            </article>
+        </section>
+
+        <section class="panel" id="clientes">
+            <h2>Clientes</h2>
+            <p>Consulta los clientes registrados en la tienda.</p>
+            
+<form id="formCliente" class="formulario">
+    <h3>Registrar nuevo cliente</h3>
+
+    <label for="nombreCliente">Nombre completo</label>
+    <input
+        type="text"
+        id="nombreCliente"
+        name="nombre"
+        placeholder="Nombre del cliente"
+        required
+    >
+
+    <label for="correoCliente">Correo electrónico</label>
+    <input
+        type="email"
+        id="correoCliente"
+        name="correo"
+        placeholder="cliente@correo.com"
+        required
+    >
+
+    <label for="telefonoCliente">Teléfono</label>
+    <input
+        type="text"
+        id="telefonoCliente"
+        name="telefono"
+        placeholder="Número de teléfono"
+        required
+    >
+
+    <button type="submit">Guardar cliente</button>
+    <p id="mensajeCliente" class="mensaje"></p>
+</form>
+
+            <button onclick="cargarClientes()">Actualizar clientes</button>
+            <div id="listaClientes"></div>
+        </section>
+
+        <section class="panel" id="productos">
+            <h2>Productos</h2>
+            <p>Consulta el inventario disponible.</p>
+            
+<form id="formProducto" class="formulario">
+    <h3>Registrar nuevo producto</h3>
+
+    <label for="nombreProducto">Nombre del producto</label>
+    <input
+        type="text"
+        id="nombreProducto"
+        name="nombre"
+        placeholder="Ejemplo: Teclado"
+        required
+    >
+
+    <label for="descripcionProducto">Descripción</label>
+    <input
+        type="text"
+        id="descripcionProducto"
+        name="descripcion"
+        placeholder="Descripción del producto"
+    >
+
+    <label for="precioProducto">Precio</label>
+    <input
+        type="number"
+        id="precioProducto"
+        name="precio"
+        min="0.01"
+        step="0.01"
+        placeholder="Ejemplo: 50000"
+        required
+    >
+
+    <label for="stockProducto">Cantidad en inventario</label>
+    <input
+        type="number"
+        id="stockProducto"
+        name="stock"
+        min="0"
+        step="1"
+        placeholder="Ejemplo: 20"
+        required
+    >
+
+    <button type="submit">Guardar producto</button>
+    <p id="mensajeProducto" class="mensaje"></p>
+</form>
+
+            <button onclick="cargarProductos()">Actualizar productos</button>
+            <div id="listaProductos"></div>
+        </section>
+
+        <section class="panel" id="pedidos">
+            <h2>Pedidos</h2>
+            <p>Consulta los pedidos y sus estados.</p>
+            
+<form id="formPedido" class="formulario">
+    <h3>Crear nuevo pedido</h3>
+
+    <label for="clientePedido">Seleccionar cliente</label>
+    <select id="clientePedido" required>
+        <option value="">Selecciona un cliente</option>
+    </select>
+
+    <h3>Productos del pedido</h3>
+
+    <div id="productosPedido">
+        <div class="producto-pedido">
+            <label>Producto</label>
+            <select class="productoSeleccionado" required>
+                <option value="">Selecciona un producto</option>
+            </select>
+
+            <label>Cantidad</label>
+            <input
+                type="number"
+                class="cantidadProducto"
+                min="1"
+                step="1"
+                value="1"
+                required
+            >
+        </div>
+    </div>
+
+    <button type="button" id="agregarProductoPedido">
+        Agregar otro producto
+    </button>
+
+    <button type="submit">Crear pedido</button>
+
+    <p id="mensajePedido" class="mensaje"></p>
+</form>
+
+            <button onclick="cargarPedidos()">Actualizar pedidos</button>
+            <div id="listaPedidos"></div>
+        </section>
+
+        <section class="panel" id="reportes">
+            <h2>Ventas por cliente</h2>
+            <button onclick="cargarReporte()">Consultar reporte</button>
+            <div id="listaReporte"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
