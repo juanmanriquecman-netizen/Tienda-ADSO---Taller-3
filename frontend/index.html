@@ -1,201 +1,153 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda ADSO | Panel de administración</title>
+    <meta name="theme-color" content="#f4f3ee">
+    <meta name="description" content="Panel de administración de Tienda ADSO">
+    <title>Tienda ADSO | Administración</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <h2>Tienda ADSO</h2>
-        <p>Panel de administración</p>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="marca" href="#inicio" aria-label="Tienda ADSO, ir al inicio">
+                <span class="marca-icono">TA</span>
+                <span class="marca-texto">tienda <strong>ADSO</strong><small>ADMINISTRACIÓN</small></span>
+            </a>
 
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#clientes">Clientes</a>
-            <a href="#productos">Productos</a>
-            <a href="#pedidos">Pedidos</a>
-            <a href="#reportes">Reportes</a>
-        </nav>
-    </aside>
+            <p class="nav-titulo">MENÚ PRINCIPAL</p>
+            <nav aria-label="Navegación principal">
+                <a class="nav-link activo" href="#inicio"><span class="nav-icono">⌂</span>Resumen</a>
+                <a class="nav-link" href="#clientes"><span class="nav-icono">♙</span>Clientes</a>
+                <a class="nav-link" href="#productos"><span class="nav-icono">▦</span>Productos</a>
+                <a class="nav-link" href="#pedidos"><span class="nav-icono">▤</span>Pedidos</a>
+                <a class="nav-link" href="#reportes"><span class="nav-icono">▥</span>Reportes</a>
+            </nav>
 
-    <main class="contenido">
-        <header>
-            <div>
-                <h1 id="inicio">Panel principal</h1>
-                <p>Gestiona tu tienda desde un solo lugar.</p>
+            <div class="sidebar-nota">
+                <span class="nota-punto"></span>
+                <div><strong>Panel de tienda</strong><small>Gestión de operaciones</small></div>
             </div>
-            <span id="estadoApi">Comprobando API...</span>
-        </header>
+            <p class="sidebar-pie">TIENDA ADSO <span>·</span> 2026</p>
+        </aside>
 
-        <section class="estadisticas">
-            <article class="tarjeta">
-                <p>Clientes</p>
-                <h2 id="totalClientes">0</h2>
-            </article>
+        <main class="contenido">
+            <header class="barra-superior">
+                <div class="migas"><span>TIENDA ADSO</span><span class="miga-separador">/</span><span>ADMINISTRACIÓN</span></div>
+                <span id="estadoApi" class="estado-api"><span class="estado-punto"></span>Comprobando API...</span>
+            </header>
 
-            <article class="tarjeta">
-                <p>Productos</p>
-                <h2 id="totalProductos">0</h2>
-            </article>
+            <section class="bienvenida" aria-labelledby="inicio">
+                <div>
+                    <p class="sobrelinea">CENTRO DE OPERACIONES</p>
+                    <h1 id="inicio">Resumen general<span>.</span></h1>
+                    <p class="bienvenida-texto">Administra clientes, inventario y pedidos desde un solo lugar.</p>
+                </div>
+                <div class="fecha-chip"><span class="fecha-icono">✳</span> Tu tienda, en orden</div>
+            </section>
 
-            <article class="tarjeta">
-                <p>Pedidos</p>
-                <h2 id="totalPedidos">0</h2>
-            </article>
-        </section>
+            <section class="estadisticas" aria-label="Resumen de registros">
+                <article class="tarjeta tarjeta-clientes">
+                    <div class="tarjeta-top"><span class="tarjeta-icono">♙</span><span class="tarjeta-etiqueta">REGISTRO</span></div>
+                    <p>Clientes</p>
+                    <h2 id="totalClientes">0</h2>
+                    <span class="tarjeta-pie">Personas registradas</span>
+                </article>
+                <article class="tarjeta tarjeta-productos">
+                    <div class="tarjeta-top"><span class="tarjeta-icono">▦</span><span class="tarjeta-etiqueta">CATÁLOGO</span></div>
+                    <p>Productos</p>
+                    <h2 id="totalProductos">0</h2>
+                    <span class="tarjeta-pie">Referencias disponibles</span>
+                </article>
+                <article class="tarjeta tarjeta-pedidos">
+                    <div class="tarjeta-top"><span class="tarjeta-icono">▤</span><span class="tarjeta-etiqueta">VENTAS</span></div>
+                    <p>Pedidos</p>
+                    <h2 id="totalPedidos">0</h2>
+                    <span class="tarjeta-pie">Pedidos procesados</span>
+                </article>
+            </section>
 
-        <section class="panel" id="clientes">
-            <h2>Clientes</h2>
-            <p>Consulta los clientes registrados en la tienda.</p>
-            
-<form id="formCliente" class="formulario">
-    <h3>Registrar nuevo cliente</h3>
+            <section class="panel" id="clientes">
+                <div class="panel-heading">
+                    <div><p class="sobrelinea">RELACIÓN CON CLIENTES</p><h2>Clientes</h2><p class="panel-descripcion">Registra personas y consulta sus datos.</p></div>
+                    <span class="seccion-numero">01</span>
+                </div>
+                <div class="contenido-seccion">
+                    <form id="formCliente" class="formulario">
+                        <div class="form-heading"><span class="form-icono">＋</span><div><h3>Nuevo cliente</h3><p>Completa la información de contacto.</p></div></div>
+                        <div class="campo"><label for="nombreCliente">Nombre completo</label><input type="text" id="nombreCliente" name="nombre" placeholder="Ej. Ana Pérez" required></div>
+                        <div class="campo"><label for="correoCliente">Correo electrónico</label><input type="email" id="correoCliente" name="correo" placeholder="ana@correo.com" required></div>
+                        <div class="campo"><label for="telefonoCliente">Teléfono</label><input type="text" id="telefonoCliente" name="telefono" placeholder="Número de contacto" required></div>
+                        <button class="boton boton-principal" type="submit">Guardar cliente <span>→</span></button>
+                        <p id="mensajeCliente" class="mensaje" aria-live="polite"></p>
+                    </form>
+                    <div class="lista-panel">
+                        <div class="lista-heading"><div><h3>Directorio</h3><p>Clientes registrados</p></div><button class="boton boton-secundario" type="button" onclick="cargarClientes()">Actualizar</button></div>
+                        <div id="listaClientes" class="lista-contenido"></div>
+                    </div>
+                </div>
+            </section>
 
-    <label for="nombreCliente">Nombre completo</label>
-    <input
-        type="text"
-        id="nombreCliente"
-        name="nombre"
-        placeholder="Nombre del cliente"
-        required
-    >
+            <section class="panel" id="productos">
+                <div class="panel-heading">
+                    <div><p class="sobrelinea">CATÁLOGO E INVENTARIO</p><h2>Productos</h2><p class="panel-descripcion">Mantén el catálogo y las existencias al día.</p></div>
+                    <span class="seccion-numero">02</span>
+                </div>
+                <div class="contenido-seccion">
+                    <form id="formProducto" class="formulario">
+                        <div class="form-heading"><span class="form-icono">＋</span><div><h3>Nuevo producto</h3><p>Agrega una referencia al catálogo.</p></div></div>
+                        <div class="campo"><label for="nombreProducto">Nombre del producto</label><input type="text" id="nombreProducto" name="nombre" placeholder="Ej. Teclado mecánico" required></div>
+                        <div class="campo"><label for="descripcionProducto">Descripción</label><input type="text" id="descripcionProducto" name="descripcion" placeholder="Detalle breve (opcional)"></div>
+                        <div class="campo"><label for="precioProducto">Precio</label><input type="number" id="precioProducto" name="precio" min="0.01" step="0.01" placeholder="50000" required></div>
+                        <div class="campo"><label for="stockProducto">Cantidad en inventario</label><input type="number" id="stockProducto" name="stock" min="0" step="1" placeholder="20" required></div>
+                        <button class="boton boton-principal" type="submit">Guardar producto <span>→</span></button>
+                        <p id="mensajeProducto" class="mensaje" aria-live="polite"></p>
+                    </form>
+                    <div class="lista-panel">
+                        <div class="lista-heading"><div><h3>Inventario</h3><p>Productos disponibles</p></div><button class="boton boton-secundario" type="button" onclick="cargarProductos()">Actualizar</button></div>
+                        <div id="listaProductos" class="lista-contenido"></div>
+                    </div>
+                </div>
+            </section>
 
-    <label for="correoCliente">Correo electrónico</label>
-    <input
-        type="email"
-        id="correoCliente"
-        name="correo"
-        placeholder="cliente@correo.com"
-        required
-    >
+            <section class="panel panel-pedidos" id="pedidos">
+                <div class="panel-heading">
+                    <div><p class="sobrelinea">VENTAS Y DESPACHOS</p><h2>Pedidos</h2><p class="panel-descripcion">Crea pedidos con varios productos y revisa su estado.</p></div>
+                    <span class="seccion-numero">03</span>
+                </div>
+                <div class="contenido-seccion pedidos-grid">
+                    <form id="formPedido" class="formulario">
+                        <div class="form-heading"><span class="form-icono">＋</span><div><h3>Crear pedido</h3><p>Selecciona el cliente y los artículos.</p></div></div>
+                        <div class="campo"><label for="clientePedido">Cliente</label><select id="clientePedido" required><option value="">Selecciona un cliente</option></select></div>
+                        <div class="productos-heading"><div><h3>Productos del pedido</h3><p>Añade uno o más artículos.</p></div><button type="button" class="boton boton-secundario boton-agregar" id="agregarProductoPedido">＋ Agregar producto</button></div>
+                        <div id="productosPedido">
+                            <div class="producto-pedido">
+                                <div class="campo"><label>Producto</label><select class="productoSeleccionado" required><option value="">Selecciona un producto</option></select></div>
+                                <div class="campo"><label>Cantidad</label><input type="number" class="cantidadProducto" min="1" step="1" value="1" required></div>
+                            </div>
+                        </div>
+                        <button class="boton boton-principal" type="submit">Confirmar pedido <span>→</span></button>
+                        <p id="mensajePedido" class="mensaje" aria-live="polite"></p>
+                    </form>
+                    <div class="lista-panel">
+                        <div class="lista-heading"><div><h3>Actividad reciente</h3><p>Pedidos registrados</p></div><button class="boton boton-secundario" type="button" onclick="cargarPedidos()">Actualizar</button></div>
+                        <div id="listaPedidos" class="lista-contenido"></div>
+                    </div>
+                </div>
+            </section>
 
-    <label for="telefonoCliente">Teléfono</label>
-    <input
-        type="text"
-        id="telefonoCliente"
-        name="telefono"
-        placeholder="Número de teléfono"
-        required
-    >
+            <section class="panel panel-reporte" id="reportes">
+                <div class="panel-heading">
+                    <div><p class="sobrelinea">LECTURA DEL NEGOCIO</p><h2>Ventas por cliente</h2><p class="panel-descripcion">Consulta el resumen de pedidos y ventas acumuladas.</p></div>
+                    <button class="boton boton-principal" type="button" onclick="cargarReporte()">Consultar reporte <span>→</span></button>
+                </div>
+                <div id="listaReporte" class="lista-contenido"></div>
+            </section>
 
-    <button type="submit">Guardar cliente</button>
-    <p id="mensajeCliente" class="mensaje"></p>
-</form>
-
-            <button onclick="cargarClientes()">Actualizar clientes</button>
-            <div id="listaClientes"></div>
-        </section>
-
-        <section class="panel" id="productos">
-            <h2>Productos</h2>
-            <p>Consulta el inventario disponible.</p>
-            
-<form id="formProducto" class="formulario">
-    <h3>Registrar nuevo producto</h3>
-
-    <label for="nombreProducto">Nombre del producto</label>
-    <input
-        type="text"
-        id="nombreProducto"
-        name="nombre"
-        placeholder="Ejemplo: Teclado"
-        required
-    >
-
-    <label for="descripcionProducto">Descripción</label>
-    <input
-        type="text"
-        id="descripcionProducto"
-        name="descripcion"
-        placeholder="Descripción del producto"
-    >
-
-    <label for="precioProducto">Precio</label>
-    <input
-        type="number"
-        id="precioProducto"
-        name="precio"
-        min="0.01"
-        step="0.01"
-        placeholder="Ejemplo: 50000"
-        required
-    >
-
-    <label for="stockProducto">Cantidad en inventario</label>
-    <input
-        type="number"
-        id="stockProducto"
-        name="stock"
-        min="0"
-        step="1"
-        placeholder="Ejemplo: 20"
-        required
-    >
-
-    <button type="submit">Guardar producto</button>
-    <p id="mensajeProducto" class="mensaje"></p>
-</form>
-
-            <button onclick="cargarProductos()">Actualizar productos</button>
-            <div id="listaProductos"></div>
-        </section>
-
-        <section class="panel" id="pedidos">
-            <h2>Pedidos</h2>
-            <p>Consulta los pedidos y sus estados.</p>
-            
-<form id="formPedido" class="formulario">
-    <h3>Crear nuevo pedido</h3>
-
-    <label for="clientePedido">Seleccionar cliente</label>
-    <select id="clientePedido" required>
-        <option value="">Selecciona un cliente</option>
-    </select>
-
-    <h3>Productos del pedido</h3>
-
-    <div id="productosPedido">
-        <div class="producto-pedido">
-            <label>Producto</label>
-            <select class="productoSeleccionado" required>
-                <option value="">Selecciona un producto</option>
-            </select>
-
-            <label>Cantidad</label>
-            <input
-                type="number"
-                class="cantidadProducto"
-                min="1"
-                step="1"
-                value="1"
-                required
-            >
-        </div>
+            <footer class="pie-pagina"><span>Tienda ADSO</span><span>Panel de administración</span></footer>
+        </main>
     </div>
-
-    <button type="button" id="agregarProductoPedido">
-        Agregar otro producto
-    </button>
-
-    <button type="submit">Crear pedido</button>
-
-    <p id="mensajePedido" class="mensaje"></p>
-</form>
-
-            <button onclick="cargarPedidos()">Actualizar pedidos</button>
-            <div id="listaPedidos"></div>
-        </section>
-
-        <section class="panel" id="reportes">
-            <h2>Ventas por cliente</h2>
-            <button onclick="cargarReporte()">Consultar reporte</button>
-            <div id="listaReporte"></div>
-        </section>
-    </main>
-
     <script src="script.js"></script>
 </body>
 </html>
